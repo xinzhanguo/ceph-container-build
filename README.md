@@ -40,3 +40,24 @@ cd ceph
 ./do_cmake.sh
 ```
 需要注意的是 编译ceph 需要 50G磁盘空间, 所以加一个参数`--storage-opt size=100G`
+
+安装依赖
+```
+apt-get update
+apt install python3-pip
+pip install prettytable
+pip install pyOpenSSL
+pip install python-dateutil
+pip search jwt
+pip install jwt
+pip install bcrypt
+pip install routes
+```
+
+测试集群
+```
+cd build
+ninja vstart        # builds just enough to run vstart
+../src/vstart.sh --debug --new -x --localhost --bluestore
+./bin/ceph -s
+```
